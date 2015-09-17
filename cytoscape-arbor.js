@@ -2,7 +2,7 @@
 
   // registers the extension on a cytoscape lib ref
   var register = function( cytoscape, arbor ){
-    if( !cytoscape ){ return; } // can't register if cytoscape unspecified
+    if( !cytoscape || !arbor ){ return; } // can't register if cytoscape unspecified
 
     var defaults = {
       animate: true, // whether to show the layout as it's running
@@ -48,9 +48,8 @@
       this._private = {};
 
       var opts = this._private.options = {};
-      for( var i in defaults ){
-        opts[i] = options[i] !== undefined ? options[i] : defaults[i];
-      }
+      for( var i in defaults ){ opts[i] = defaults[i]; }
+      for( var i in options ){ opts[i] = options[i]; }
     }
 
     ArborLayout.prototype.run = function(){
@@ -61,7 +60,7 @@
       var nodes = eles.nodes().not(':parent');
       var edges = eles.edges();
       var simUpdatingPos = false;
-      
+
       var bb = options.boundingBox || { x1: 0, y1: 0, w: cy.width(), h: cy.height() };
       if( bb.x2 === undefined ){ bb.x2 = bb.x1 + bb.w; }
       if( bb.w === undefined ){ bb.w = bb.x2 - bb.x1; }
@@ -355,7 +354,7 @@
   }
 
   if( typeof cytoscape !== 'undefined' ){ // expose to global cytoscape (i.e. window.cytoscape)
-    register( cytoscape );
+    register( cytoscape, arbor );
   }
 
 })();
