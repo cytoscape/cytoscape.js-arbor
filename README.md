@@ -35,15 +35,16 @@ Download the library:
 CommonJS:
 ```js
 var cytoscape = require('cytoscape');
-var arbor = require('cytoscape-arbor');
+var cyarbor = require('cytoscape-arbor');
+var arbor = require('arbor');
 
-arbor( cytoscape ); // register extension
+cyarbor( cytoscape, arbor ); // register extension
 ```
 
 AMD:
 ```js
-require(['cytoscape', 'cytoscape-arbor'], function( cytoscape, arbor ){
-  arbor( cytoscape ); // register extension
+require(['cytoscape', 'cytoscape-arbor', 'arbor'], function( cytoscape, cyarbor, arbor ){
+  cyarbor( cytoscape, arbor ); // register extension
 });
 ```
 
