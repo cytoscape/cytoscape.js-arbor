@@ -45,16 +45,14 @@
     };
 
     function ArborLayout(options){
-      this._private = {};
-
-      var opts = this._private.options = {};
+      var opts = this.options = {};
       for( var i in defaults ){ opts[i] = defaults[i]; }
       for( var i in options ){ opts[i] = options[i]; }
     }
 
     ArborLayout.prototype.run = function(){
       var layout = this;
-      var options = this._private.options;
+      var options = this.options;
       var cy = options.cy;
       var eles = options.eles;
       var nodes = eles.nodes().not(':parent');
@@ -94,7 +92,7 @@
         return;
       }
 
-      var sys = layout._private.system = arbor.ParticleSystem();
+      var sys = layout.system = arbor.ParticleSystem();
 
       sys.parameters({
         repulsion: options.repulsion,
@@ -185,7 +183,7 @@
         if( value == null ){
           return undefined;
         } else if( typeof value == typeof function(){} ){
-          return value.apply(element, [element._private.data, {
+          return value.apply(element, [element.data(), {
             nodes: nodes.length,
             edges: edges.length,
             element: element
@@ -231,7 +229,7 @@
 
       var resizeHandler;
       cy.on('resize', resizeHandler = function(){
-        if( options.boundingBox == null && layout._private.system != null ){
+        if( options.boundingBox == null && layout.system != null ){
           var w = cy.width();
           var h = cy.height();
 
@@ -242,9 +240,9 @@
       function addNode( node ){
         if( node.isFullAutoParent() ){ return; } // they don't exist in the sim
 
-        var id = node._private.data.id;
+        var id = node.id();
         var mass = calculateValueForElement(node, options.nodeMass);
-        var locked = node._private.locked;
+        var locked = node.locked();
         var nPos = node.position();
 
         if( options.randomize ){
@@ -292,8 +290,8 @@
         grabbableNodes.ungrabify();
       }
 
-      var doneHandler = layout._private.doneHandler = function(){
-        layout._private.doneHandler = null;
+      var doneHandler = layout.doneHandler = function(){
+        layout.doneHandler = null;
 
         if( !options.animate ){
           if( options.fit ){
@@ -328,12 +326,12 @@
     };
 
     ArborLayout.prototype.stop = function(){
-      if( this._private.system != null ){
-        this._private.system.stop();
+      if( this.system != null ){
+        this.system.stop();
       }
 
-      if( this._private.doneHandler ){
-        this._private.doneHandler();
+      if( this.doneHandler ){
+        this.doneHandler();
       }
 
       return this; // chaining
