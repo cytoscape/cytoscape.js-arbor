@@ -1,6 +1,6 @@
 {
   "name": "cytoscape-arbor",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "The Arbor physics simulation layout for Cytoscape.js",
   "main": "cytoscape-arbor.js",
   "repository": {
