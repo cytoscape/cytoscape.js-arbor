@@ -6,7 +6,7 @@ cytoscape-arbor
 
 The Arbor physics simulation layout for Cytoscape.js
 
-**The `arbor` layout gives relatively slow and poor results compared to other physics simulation layouts.  Consider using CoSE or Cola instead.**
+**The `arbor` layout gives relatively slow and poor results compared to other physics simulation layouts.  Consider using [`cose`](http://js.cytoscape.org/#layouts/cose), [`cose-bilkent`](https://github.com/cytoscape/cytoscape.js-cose-bilkent), or [`cola`](https://github.com/cytoscape/cytoscape.js-cola) instead.**
 
 The `arbor` layout uses a [force-directed](http://en.wikipedia.org/wiki/Force-directed_graph_drawing) physics simulation.  For more information about Arbor and its parameters, refer to [its documentation](http://arborjs.org/reference).
 
