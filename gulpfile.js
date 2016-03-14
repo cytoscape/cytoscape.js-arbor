@@ -95,6 +95,6 @@ gulp.task('lint', function(){
 
     .pipe( jshint.reporter(jshStylish) )
 
-    .pipe( jshint.reporter('fail') )
+    // .pipe( jshint.reporter('fail') )
   ;
 });
