@@ -150,7 +150,10 @@ SOFTWARE.
 
           if( !options.infinite && doneTime != Infinity ){
             clearTimeout(doneTimeout);
-            doneTimeout = setTimeout(doneHandler, doneTime);
+
+            doneTimeout = setTimeout(function(){
+              layout.stop();
+            }, doneTime);
           }
 
           var movedNodes = cy.collection();
