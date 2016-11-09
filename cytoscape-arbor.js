@@ -263,7 +263,7 @@ SOFTWARE.
       });
 
       function addNode( node ){
-        if( node.isFullAutoParent() ){ return; } // they don't exist in the sim
+        if( node.isParent() ){ return; } // they don't exist in the sim
 
         var id = node.id();
         var mass = calculateValueForElement(node, options.nodeMass);
