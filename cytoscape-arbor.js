@@ -301,15 +301,13 @@ SOFTWARE.
         });
       }
 
-      nodes.each(function(node, i){
-        // Perform 2.x and 1.x backwards compatibility check
-        addNode( typeof i === "number" ? node : i );
-      });
+      for(var i = nodes.length - 1; i >= 0; i--) {
+        addNode( nodes[i] );
+      }
 
-      edges.each(function(edge, i){
-        // Perform 2.x and 1.x backwards compatibility check
-        addEdge( typeof i === "number" ? edge : i );
-      });
+      for(var i = edges.length - 1; i >= 0; i--) {
+        addEdge( edges[i] );
+      }
 
       var grabbableNodes = nodes.filter(":grabbable");
       // disable grabbing if so set
