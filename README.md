@@ -1,6 +1,7 @@
 cytoscape-arbor
 ================================================================================
 
+[![DOI](https://zenodo.org/badge/42204006.svg)](https://zenodo.org/badge/latestdoi/42204006)
 
 ## Description
 
